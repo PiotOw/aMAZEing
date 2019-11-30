@@ -33,6 +33,10 @@ public class Maze {
         return x * 2;
     }
 
+    public MazeElement[][] getMaze(){
+        return this.maze;
+    }
+
     private void makeEntranceExit() {
         Random random = new Random();
         int range;
