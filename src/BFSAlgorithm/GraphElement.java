@@ -13,17 +13,30 @@ public class GraphElement {
         return id;
     }
 
-    public void addNeighbour (GraphElement newNeighbour) {
+    public boolean isExit() {
+        return isExit;
+    }
+
+    public boolean isEntrance() {
+        return isEntrance;
+    }
+
+    public void addNeighbour(GraphElement newNeighbour) {
         this.neighbours.add(newNeighbour);
     }
 
-    public GraphElement getNeighbour (int index) {
+    public GraphElement getNeighbour(int index) {
         return this.neighbours.get(index);
+    }
+
+    public int getNeighboursAmount() {
+        return this.neighbours.size();
     }
 
     public void setExit() {
         this.isExit = true;
     }
+
     public void setEntrance() {
         this.isEntrance = true;
     }

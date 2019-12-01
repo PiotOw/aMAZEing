@@ -8,10 +8,16 @@ import MazeElements.Path;
 import java.util.ArrayList;
 
 public class Graph {
+    private GraphElement entranceElement;
+
     private ArrayList<GraphElement> elementsList;
 
     public Graph() {
         this.elementsList = new ArrayList<>();
+    }
+
+    public GraphElement getEntranceElement() {
+        return this.entranceElement;
     }
 
     private int mazeIndexToElementId(int x, int y, int width) {
@@ -45,11 +51,13 @@ public class Graph {
         for (int i = 1; i < width; i += 2) {
             if (maze[0][i] instanceof Entrance) {
                 this.elementsList.get(mazeIndexToElementId(i, 1, columns)).setEntrance();
+                this.entranceElement = this.elementsList.get(mazeIndexToElementId(i, 1, columns));
             } else if (maze[0][i] instanceof Exit) {
                 this.elementsList.get(mazeIndexToElementId(i, 1, columns)).setExit();
             }
             if (maze[height - 1][i] instanceof Entrance) {
                 this.elementsList.get(mazeIndexToElementId(i, height - 2, columns)).setEntrance();
+                this.entranceElement = this.elementsList.get(mazeIndexToElementId(i, height - 2, columns));
             } else if (maze[height - 1][i] instanceof Exit) {
                 this.elementsList.get(mazeIndexToElementId(i, height - 2, columns)).setExit();
             }
@@ -57,11 +65,13 @@ public class Graph {
         for (int i = 1; i < height; i += 2) {
             if (maze[i][0] instanceof Entrance) {
                 this.elementsList.get(mazeIndexToElementId(1, i, columns)).setEntrance();
+                this.entranceElement = this.elementsList.get(mazeIndexToElementId(1, i, columns));
             } else if (maze[i][0] instanceof Exit) {
                 this.elementsList.get(mazeIndexToElementId(1, i, columns)).setExit();
             }
             if (maze[i][width - 1] instanceof Entrance) {
                 this.elementsList.get(mazeIndexToElementId(width - 2, i, columns)).setEntrance();
+                this.entranceElement = this.elementsList.get(mazeIndexToElementId(width - 2, i, columns));
             } else if (maze[i][width - 1] instanceof Exit) {
                 this.elementsList.get(mazeIndexToElementId(width - 2, i, columns)).setExit();
             }
@@ -85,6 +95,5 @@ public class Graph {
             }
         }
         findEntranceExit(maze);
-
     }
 }
