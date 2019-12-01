@@ -8,19 +8,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileReader {
-    private File file;
-    private Scanner scanner;
 
     public void readFile(String path, Maze maze) {
         ArrayList<String> lines = new ArrayList<>();
         int height = 1;
-        this.file = new File(path);
+        File file = new File(path);
         try {
-            this.scanner = new Scanner(this.file);
+            Scanner scanner = new Scanner(file);
             lines.add(scanner.nextLine());
             int width = lines.get(0).length();
             while (scanner.hasNextLine()) {
-                lines.add(this.scanner.nextLine());
+                lines.add(scanner.nextLine());
                 height++;
             }
             maze.generateEmptyMaze((width - 1) / 2, (height - 1) / 2);

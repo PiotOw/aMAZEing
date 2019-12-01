@@ -11,6 +11,18 @@ public class Maze {
 
     private MazeElement[][] maze;
 
+    public int getWidth() {
+        return this.width;
+    }
+
+    public int getHeight() {
+        return this.height;
+    }
+
+    public MazeElement getMazeElement(int x, int y) {
+        return this.maze[y][x];
+    }
+
     public void setEntrance(int y, int x) {
         this.maze[y][x] = new Entrance();
     }
