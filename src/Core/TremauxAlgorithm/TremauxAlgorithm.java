@@ -38,7 +38,8 @@ public class TremauxAlgorithm {
                 }
             }
         }
-
+        ((MarkablePath) markableMaze[exitPosition[1]][exitPosition[0]]).setIsCorridor(false);
+        ((MarkablePath) markableMaze[exitPosition[1]][exitPosition[0]]).setIsExit(true);
         for (int i = 1; i < height; i += 2) {
             for (int j = 1; j < width; j += 2) {
                 checkPossibleDirections(markableMaze[i][j], j, i);
@@ -117,6 +118,9 @@ public class TremauxAlgorithm {
         int seenOnce = 0;
         if (currentMarkablePath().isCorridor()) {
             move(lastMove);
+            if(currentMarkablePath().isExit()){
+                return;
+            }
         }
         for (int i = 0; i < 4; i++) {
             if (currentMarkablePath().getDirections()[i] == 0) {
@@ -161,13 +165,6 @@ public class TremauxAlgorithm {
         lastMove = direction;
     }
 
-    private boolean checkIfExit() {
-        if (currentPosition[0] == exitPosition[0] && currentPosition[1] == exitPosition[1]) {
-            return true;
-        }
-        return false;
-    }
-
     private boolean checkIfEntrance() {
         if (currentPosition[0] == startingPosition[0] && currentPosition[1] == startingPosition[1]) {
             return true;
@@ -208,12 +205,12 @@ public class TremauxAlgorithm {
     public void solve(MazeElement[][] maze) {
         makeMazeMarkable(maze);
         currentPosition = startingPosition.clone();
-        while (!checkIfExit()) {
+        while (!currentMarkablePath().isExit()) {
             chooseDirection();
         }
         markCorrectPath();
         printCorrectPath();
-        printMaze();
+//        printMaze();
     }
 
     public void printMaze() {

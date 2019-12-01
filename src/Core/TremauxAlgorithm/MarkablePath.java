@@ -3,6 +3,7 @@ package Core.TremauxAlgorithm;
 import Core.MazeElements.Path;
 
 public class MarkablePath extends Path {
+    private boolean isExit = false;
     private boolean isAnswer;
     private boolean isCorridor;
     private int[] directions = {-1, -1, -1, -1};
@@ -21,6 +22,14 @@ public class MarkablePath extends Path {
 
     public boolean isCorridor() {
         return this.isCorridor;
+    }
+
+    public void setIsExit(boolean isExit) {
+        this.isExit = isExit;
+    }
+
+    public boolean isExit() {
+        return this.isExit;
     }
 
     @Override

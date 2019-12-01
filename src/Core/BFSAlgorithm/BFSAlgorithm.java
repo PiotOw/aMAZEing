@@ -45,5 +45,6 @@ public class BFSAlgorithm {
                 System.out.print(" -> ");
             }
         }
+        System.out.println();
     }
 }
