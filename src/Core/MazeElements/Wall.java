@@ -1,4 +1,4 @@
-package MazeElements;
+package Core.MazeElements;
 
 public class Wall extends MazeElement {
     public Wall() {

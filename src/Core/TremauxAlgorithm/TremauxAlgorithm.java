@@ -1,6 +1,6 @@
-package TremauxAlgorithm;
+package Core.TremauxAlgorithm;
 
-import MazeElements.*;
+import Core.MazeElements.*;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -10,6 +10,7 @@ public class TremauxAlgorithm {
     private int[] startingPosition;
     private int[] exitPosition;
     private int[] currentPosition;
+    private ArrayList<Integer> correctPath;
     private int width;
     private int height;
     private int lastMove;
@@ -19,9 +20,9 @@ public class TremauxAlgorithm {
     }
 
     private void makeMazeMarkable(MazeElement[][] maze) {
-        width = maze[0].length;
-        height = maze.length;
-        markableMaze = new MazeElement[height][width];
+        this.width = maze[0].length;
+        this.height = maze.length;
+        this.markableMaze = new MazeElement[height][width];
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 if (maze[i][j] instanceof Wall) {
@@ -158,9 +159,6 @@ public class TremauxAlgorithm {
             currentMarkablePath().getDirections()[1]++;
         }
         lastMove = direction;
-//        System.out.println("currentPosition[0]: " + currentPosition[0]);
-//        System.out.println("currentPosition[1]: " + currentPosition[1]);
-        System.out.println();
     }
 
     private boolean checkIfExit() {
@@ -169,6 +167,7 @@ public class TremauxAlgorithm {
         }
         return false;
     }
+
     private boolean checkIfEntrance() {
         if (currentPosition[0] == startingPosition[0] && currentPosition[1] == startingPosition[1]) {
             return true;
@@ -176,9 +175,15 @@ public class TremauxAlgorithm {
         return false;
     }
 
+    private int currentRoomNumber() {
+        return (currentPosition[0] - 1) / 2 + (currentPosition[1] - 1) / 2 * (width - 1) / 2;
+    }
+
     private void markCorrectPath() {
+        this.correctPath = new ArrayList<>();
         while (!checkIfEntrance()) {
             currentMarkablePath().setIsAnswer(true);
+            this.correctPath.add(currentRoomNumber());
             for (int i = 0; i < 4; i++) {
                 if (currentMarkablePath().getDirections()[i] == 1) {
                     move(i);
@@ -186,20 +191,28 @@ public class TremauxAlgorithm {
                 }
             }
         }
+        this.correctPath.add(currentRoomNumber());
         currentMarkablePath().setIsAnswer(true);
+    }
+
+    private void printCorrectPath() {
+        for (int i = this.correctPath.size() - 1; i >= 0; i--) {
+            System.out.print(this.correctPath.get(i));
+            if(i != 0) {
+                System.out.print(" -> ");
+            }
+        }
+        System.out.println();
     }
 
     public void solve(MazeElement[][] maze) {
         makeMazeMarkable(maze);
         currentPosition = startingPosition.clone();
-//        System.out.println("startingPosition[0]: " + startingPosition[0]);
-//        System.out.println("startingPosition[1]: " + startingPosition[1]);
-//        System.out.println("exitPosition[0]: " + exitPosition[0]);
-//        System.out.println("exitPosition[1]: " + exitPosition[1]);
         while (!checkIfExit()) {
             chooseDirection();
         }
         markCorrectPath();
+        printCorrectPath();
         printMaze();
     }
 
@@ -211,5 +224,4 @@ public class TremauxAlgorithm {
             System.out.println();
         }
     }
-
 }

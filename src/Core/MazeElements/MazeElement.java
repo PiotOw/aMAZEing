@@ -1,4 +1,4 @@
-package MazeElements;
+package Core.MazeElements;
 
 public abstract class MazeElement {
     private String symbol;

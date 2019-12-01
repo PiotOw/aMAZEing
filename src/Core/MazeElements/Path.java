@@ -1,4 +1,4 @@
-package MazeElements;
+package Core.MazeElements;
 
 public class Path extends MazeElement {
     public Path() {

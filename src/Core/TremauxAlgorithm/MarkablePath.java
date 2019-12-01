@@ -1,6 +1,6 @@
-package TremauxAlgorithm;
+package Core.TremauxAlgorithm;
 
-import MazeElements.Path;
+import Core.MazeElements.Path;
 
 public class MarkablePath extends Path {
     private boolean isAnswer;

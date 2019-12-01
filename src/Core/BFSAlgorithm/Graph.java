@@ -1,9 +1,9 @@
-package BFSAlgorithm;
+package Core.BFSAlgorithm;
 
-import MazeElements.Entrance;
-import MazeElements.Exit;
-import MazeElements.MazeElement;
-import MazeElements.Path;
+import Core.MazeElements.Entrance;
+import Core.MazeElements.Exit;
+import Core.MazeElements.MazeElement;
+import Core.MazeElements.Path;
 
 import java.util.ArrayList;
 

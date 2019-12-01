@@ -1,7 +1,7 @@
-package BFSAlgorithm;
+package Core.BFSAlgorithm;
 
 
-import MazeElements.MazeElement;
+import Core.MazeElements.MazeElement;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

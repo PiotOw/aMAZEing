@@ -1,4 +1,4 @@
-package BFSAlgorithm;
+package Core.BFSAlgorithm;
 
 import java.util.ArrayList;
 

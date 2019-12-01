@@ -1,4 +1,6 @@
-import MazeElements.*;
+package Core;
+
+import Core.MazeElements.*;
 
 import java.util.Random;
 
@@ -9,19 +11,19 @@ public class Maze {
 
     private MazeElement[][] maze;
 
-    private void setEntrance(int y, int x) {
+    public void setEntrance(int y, int x) {
         this.maze[y][x] = new Entrance();
     }
 
-    private void setExit(int y, int x) {
+    public void setExit(int y, int x) {
         this.maze[y][x] = new Exit();
     }
 
-    private void setWall(int y, int x) {
+    public void setWall(int y, int x) {
         this.maze[y][x] = new Wall();
     }
 
-    private void setPath(int y, int x) {
+    public void setPath(int y, int x) {
         this.maze[y][x] = new Path();
     }
 
@@ -118,7 +120,11 @@ public class Maze {
     public void generateEmptyMaze(int width, int height) {
         this.width = width;
         this.height = height;
-        maze = new MazeElement[height * 2 + 1][width * 2 + 1];
+        this.maze = new MazeElement[height * 2 + 1][width * 2 + 1];
+    }
+
+    public void generateMaze(int width, int height) {
+        generateEmptyMaze(width, height);
         for (int i = 0; i < this.maze.length; i++) {
             for (int j = 0; j < this.maze[0].length; j++) {
                 if (i == 0 || i == this.maze.length - 1 || j == 0 || j == this.maze[0].length - 1) {
