@@ -47,7 +47,7 @@ public class Maze {
         return x * 2;
     }
 
-    public MazeElement[][] getMaze(){
+    public MazeElement[][] getMaze() {
         return this.maze;
     }
 

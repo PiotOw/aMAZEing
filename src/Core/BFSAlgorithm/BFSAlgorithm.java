@@ -32,6 +32,10 @@ public class BFSAlgorithm {
                     break;
                 }
             }
+            if (removed.isExit()) {
+                solved = true;
+                exitElement = removed;
+            }
         }
         currentElement = exitElement;
         while (!currentElement.isEntrance()) {

@@ -14,10 +14,10 @@ public class CommandLineInterface {
     private Maze maze = new Maze();
 
     private void printCutoff(int n) {
-        for(int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             System.out.print("*");
         }
-            System.out.println();
+        System.out.println();
     }
 
     private void printBlankSpace(int n) {
@@ -96,7 +96,7 @@ public class CommandLineInterface {
         int choice = 0;
         int tried = 0;
         while (choice != 1 && choice != 2) {
-            if(tried == 1){
+            if (tried == 1) {
                 System.out.println("Wrong input! Choose your option again:");
             }
             choice = scanner.nextInt();
@@ -115,10 +115,10 @@ public class CommandLineInterface {
         printBlankSpace(1);
         int choice;
         choice = inputOnly1or2();
-        if(choice == 1) {
+        if (choice == 1) {
             BFSAlgorithm bfsAlgorithm = new BFSAlgorithm();
             bfsAlgorithm.solve(maze.getMaze());
-        } else if(choice == 2) {
+        } else if (choice == 2) {
             TremauxAlgorithm tremauxAlgorithm = new TremauxAlgorithm();
             tremauxAlgorithm.solve(maze.getMaze());
         }
@@ -127,11 +127,11 @@ public class CommandLineInterface {
         System.out.println("1: Yes!");
         System.out.println("2: No, Goodbye! :(");
         printBlankSpace(2);
-        if(inputOnly1or2() == 1) {
-            if(choice == 2) {
+        if (inputOnly1or2() == 1) {
+            if (choice == 2) {
                 BFSAlgorithm bfsAlgorithm = new BFSAlgorithm();
                 bfsAlgorithm.solve(maze.getMaze());
-            } else if(choice == 1) {
+            } else if (choice == 1) {
                 TremauxAlgorithm tremauxAlgorithm = new TremauxAlgorithm();
                 tremauxAlgorithm.solve(maze.getMaze());
             }
@@ -160,10 +160,10 @@ public class CommandLineInterface {
         printMainMenu();
         int choice;
         choice = inputOnly1or2();
-        if(choice == 1) {
+        if (choice == 1) {
             printBlankSpace(7);
             mazeGenerationMenu();
-        } else if(choice == 2) {
+        } else if (choice == 2) {
             printBlankSpace(7);
             mazeLoadingMenu();
         }

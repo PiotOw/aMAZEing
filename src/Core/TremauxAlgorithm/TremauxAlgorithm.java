@@ -118,7 +118,7 @@ public class TremauxAlgorithm {
         int seenOnce = 0;
         if (currentMarkablePath().isCorridor()) {
             move(lastMove);
-            if(currentMarkablePath().isExit()){
+            if (currentMarkablePath().isExit()) {
                 return;
             }
         }
@@ -195,7 +195,7 @@ public class TremauxAlgorithm {
     private void printCorrectPath() {
         for (int i = this.correctPath.size() - 1; i >= 0; i--) {
             System.out.print(this.correctPath.get(i));
-            if(i != 0) {
+            if (i != 0) {
                 System.out.print(" -> ");
             }
         }
@@ -210,15 +210,5 @@ public class TremauxAlgorithm {
         }
         markCorrectPath();
         printCorrectPath();
-//        printMaze();
-    }
-
-    public void printMaze() {
-        for (int i = 0; i < this.markableMaze.length; i++) {
-            for (int j = 0; j < this.markableMaze[0].length; j++) {
-                System.out.print(this.markableMaze[i][j].getSymbol());
-            }
-            System.out.println();
-        }
     }
 }
